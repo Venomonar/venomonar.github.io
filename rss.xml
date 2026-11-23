@@ -7,6 +7,21 @@
     <language>ru</language>
     <atom:link href="https://venomonar.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Почему попкорн подпрыгивает?</title>
+      <link>https://venomonar.github.io/articles/popcorn/</link>
+      <guid isPermaLink="true">https://venomonar.github.io/articles/popcorn/</guid>
+      <pubDate>Tue, 24 Nov 2026 03:00:00 GMT</pubDate>
+      <description>Сначала на сковороде слышны одиночные хлопки. Потом попкорн начинает барабанить по крышке.</description>
+      <category>format-article</category>
+      <enclosure url="https://venomonar.github.io/assets/popcorn.jpg" length="642960" type="image/jpeg"/>
+      <content:encoded><![CDATA[<figure><img src="https://venomonar.github.io/assets/popcorn.jpg" alt="Зёрна попкорна на сковороде"></figure>
+<p>Сначала на сковороде слышны одиночные хлопки. Потом попкорн начинает барабанить по крышке. Как зерно, которое только что лежало на дне, умудряется подлететь так высоко?</p>
+<p>Внутри зерна есть немного воды. При нагреве часть её превращается в пар. Плотная оболочка удерживает его внутри, давление растёт, и в какой-то момент зерно лопается. Через трещину выходит горячий крахмал и быстро раздувается.</p>
+<p>Самое интересное происходит у дна. На замедленной съёмке видно, как из зерна вырастает короткая «ножка» из крахмала. Она упирается в горячую поверхность, сжимается и тут же распрямляется. Этот толчок и отправляет попкорн в воздух.</p>
+<p>Физики сняли прыжок с частотой 2900 кадров в секунду. Между кадром со сжатой «ножкой» и кадром, на котором зерно уже в воздухе, прошло около семи миллисекунд. До приземления оно успело сделать больше одного оборота.</p>
+<p>Больше таких историй в Telegram-канале <a href="https://t.me/shelknulo27">«Щёлкнуло»</a>.</p>]]></content:encoded>
+    </item>
+    <item>
       <title>Как ЦБ хочет изменить цены на ОСАГО?</title>
       <link>https://venomonar.github.io/articles/osago/</link>
       <guid isPermaLink="true">https://venomonar.github.io/articles/osago/</guid>
