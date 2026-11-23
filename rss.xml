@@ -7,6 +7,21 @@
     <language>ru</language>
     <atom:link href="https://venomonar.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Почему в голосовом ты звучишь иначе?</title>
+      <link>https://venomonar.github.io/articles/voice-message/</link>
+      <guid isPermaLink="true">https://venomonar.github.io/articles/voice-message/</guid>
+      <pubDate>Tue, 24 Nov 2026 12:00:00 GMT</pubDate>
+      <description>Переслушиваешь своё голосовое, чтобы проверить, всё ли сказал. Слова знакомые, интонации вроде твои, а голос звучит как будто чужой.</description>
+      <category>format-article</category>
+      <enclosure url="https://venomonar.github.io/assets/voice-message.jpg" length="112442" type="image/jpeg"/>
+      <content:encoded><![CDATA[<figure><img src="https://venomonar.github.io/assets/voice-message.jpg" alt="Женщина записывает голосовое"></figure>
+<p>Переслушиваешь своё голосовое, чтобы проверить, всё ли сказал. Слова знакомые, интонации вроде твои, а голос звучит как будто чужой. При этом друг в чате узнаёт тебя с первых слов. Почему ему этот голос кажется привычным?</p>
+<p>Когда ты говоришь, звук идёт от рта к ушам по воздуху. Одновременно вибрации от речи передаются к внутреннему уху через кости и мягкие ткани головы. Ты слышишь оба звука сразу, и именно к такому тембру привыкаешь.</p>
+<p>Это особенно заметно, если разговариваешь в плотно сидящих наушниках. Звуки вокруг становятся тише, а собственный голос вдруг кажется гулким. Закрытый слуховой проход усиливает часть низких звуков, которые доходят до уха через вибрации.</p>
+<p>Микрофон телефона записывает то, что до него долетело по воздуху. Поэтому в голосовом пропадает та часть звука, которую ты обычно слышишь изнутри, и голос может показаться тоньше. Друг и при встрече слышит тебя со стороны. В голосовом он узнаёт привычный тембр, паузы и то, как ты одни слова растягиваешь, а другие проглатываешь.</p>
+<p>Больше таких историй в Telegram-канале <a href="https://t.me/shelknulo27">«Щёлкнуло»</a>.</p>]]></content:encoded>
+    </item>
+    <item>
       <title>Почему попкорн подпрыгивает?</title>
       <link>https://venomonar.github.io/articles/popcorn/</link>
       <guid isPermaLink="true">https://venomonar.github.io/articles/popcorn/</guid>
