@@ -1,0 +1,33 @@
+name: Scheduled site articles
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/scheduled-site-articles.yml'
+      - '.github/publish-site.py'
+      - '.github/site-publications.json'
+  workflow_dispatch:
+  schedule:
+    - cron: '0,10,20,30,40,50 3,12 24 11 *'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: scheduled-site-articles
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - name: Publish articles and refresh Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/publish-site.py

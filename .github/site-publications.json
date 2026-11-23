@@ -1,0 +1,35 @@
+{
+  "branch": "site-queue/2026-11-24",
+  "articles": [
+    {
+      "slug": "popcorn",
+      "at": "2026-11-24T06:00:00+03:00",
+      "snapshot": "2036c96666da4a313daa36da9f0e65473a487eb9",
+      "prior": {
+        "index.html": "dfb5acc7516f8b266b0c2175395226bbbaebedeb",
+        "rss.xml": "111ae5bcaf6ca5ada02c908bd3fab70d44430deb"
+      },
+      "files": {
+        "index.html": "5edf6d28c31db134ae44cb3da21aa7ad68023245",
+        "rss.xml": "cd7df55333f38c81058e7b967e34b2f393ddf3a0",
+        "articles/popcorn/index.html": "a5f7045d77e738adb4d7bc57a9f6e9398edacabf",
+        "assets/popcorn.jpg": "cc4c65a3f6188207496d40f587eb0d349ddca24f"
+      }
+    },
+    {
+      "slug": "voice-message",
+      "at": "2026-11-24T15:00:00+03:00",
+      "snapshot": "acd8edb978dd12bd188c3b2520af34fe56c5ce0d",
+      "prior": {
+        "index.html": "5edf6d28c31db134ae44cb3da21aa7ad68023245",
+        "rss.xml": "cd7df55333f38c81058e7b967e34b2f393ddf3a0"
+      },
+      "files": {
+        "index.html": "6628bd9b51d04dcf1adbb68504d52bd93452aa77",
+        "rss.xml": "f03339914b820789c2021bd28caf227900f46dbb",
+        "articles/voice-message/index.html": "50b3d9212ec83dabc2a0e613af557b7d205329c2",
+        "assets/voice-message.jpg": "d7aec22f11fc841d218e74df125ab0238b8f0ff2"
+      }
+    }
+  ]
+}
