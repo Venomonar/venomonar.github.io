@@ -9,7 +9,10 @@ on:
       - '.github/site-publications.json'
   workflow_dispatch:
   schedule:
-    - cron: '0,10,20,30,40,50 3,12 24 11 *'
+    - cron: '0 3,6 27 11 *'
+    - cron: '7,17,32,47 3,6 27 11 *'
+    - cron: '17 4-5,7-23 27 11 *'
+    - cron: '17 1,4,7 28 11 *'
 
 permissions:
   contents: write

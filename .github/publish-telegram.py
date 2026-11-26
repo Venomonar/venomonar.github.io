@@ -4,7 +4,7 @@ import json
 import os
 import re
 import subprocess
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
@@ -16,6 +16,7 @@ from xml.etree import ElementTree
 CHANNEL = "shelknulo27"
 SITE = "https://venomonar.github.io"
 ENCODED = "{http://purl.org/rss/1.0/modules/content/}encoded"
+COVER_TAG = '<img src="tg://photo?id=cover"/>'
 
 
 class TelegramRejected(RuntimeError):
@@ -79,7 +80,7 @@ def prepare(article):
     title = item.findtext("title", "")
     content = item.findtext(ENCODED, "")
     image_pattern = rf'<figure><img src="{re.escape(SITE)}/assets/{slug}\.jpg"[^>]*></figure>'
-    content, image_count = re.subn(image_pattern, '<img src="tg://photo?id=cover"/>', content)
+    content, image_count = re.subn(image_pattern, COVER_TAG, content)
     if not title or image_count != 1 or f"https://t.me/{CHANNEL}" not in content:
         raise RuntimeError(f"Invalid scheduled content for {slug}.")
     cover = queued_file(article, f"assets/{slug}.jpg")
@@ -145,9 +146,10 @@ def publish(channel, branch, article, title, content, cover):
     state["published_at"] = datetime.fromtimestamp(message["date"], timezone.utc).isoformat()
     blocks = message.get("rich_message", {}).get("blocks", [])
     returned_content = json.dumps(blocks, ensure_ascii=False)
+    photo_positions = [index for index, block in enumerate(blocks) if block.get("type") == "photo"]
     state["format_verified"] = (
         title in returned_content and f"https://t.me/{CHANNEL}" in returned_content
-        and sum(block["type"] == "photo" for block in blocks) == 1
+        and photo_positions == [cover_block_index(content)]
     )
     save_state(path, branch, slug, state, claim_sha)
     if not state["format_verified"]:
@@ -155,12 +157,22 @@ def publish(channel, branch, article, title, content, cover):
     print(f"Published {slug}: {state['url']}")
 
 
+def cover_block_index(content):
+    before_cover, _, _ = content.partition(COVER_TAG)
+    # Telegram's title is a separate first block.
+    return 1 + len(re.findall(r"<(?:p|h[1-6]|ul|ol|blockquote)\b", before_cover))
+
+
+def due_articles(articles, now):
+    return [article for article in articles if datetime.fromisoformat(article["at"]) <= now]
+
+
 def main():
     queue = json.loads(Path(".github/site-publications.json").read_text(encoding="utf-8"))
     now = datetime.now(timezone.utc)
     event = os.environ["GITHUB_EVENT_NAME"]
     slots = [(item, datetime.fromisoformat(item["at"])) for item in queue["articles"]]
-    due = [item for item, at in slots if at <= now < at + timedelta(hours=1)]
+    due = due_articles(queue["articles"], now)
     if event == "schedule" and not due:
         return
     subprocess.run(["git", "fetch", "--no-tags", "origin", f"refs/heads/{queue['branch']}"], check=True)
@@ -172,12 +184,19 @@ def main():
     if channel.get("username") != CHANNEL or channel.get("type") != "channel" or not member.get("can_post_messages"):
         raise RuntimeError("Bot cannot publish to the approved Telegram channel.")
 
+    failures = []
     for article, at in slots:
         if event in {"schedule", "workflow_dispatch"} and article in due:
-            publish(channel, queue["branch"], article, *prepare(article))
+            try:
+                publish(channel, queue["branch"], article, *prepare(article))
+            except RuntimeError as error:
+                failures.append(f"{article['slug']}: {error}")
         elif event != "schedule":
-            title, _, _ = prepare(article)
-            print(f"Validated {at.isoformat()} {title}")
+            title, content, _ = prepare(article)
+            print(f"Validated {at.isoformat()} {title}; cover block {cover_block_index(content)}")
+
+    if failures:
+        raise RuntimeError("\n".join(failures))
 
 
 if __name__ == "__main__":

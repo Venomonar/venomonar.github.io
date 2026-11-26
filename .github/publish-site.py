@@ -25,7 +25,7 @@ def due_articles(articles, now):
     due = []
     for article in articles:
         release = datetime.fromisoformat(article["at"])
-        if now.astimezone(release.tzinfo).date() == release.date() and now >= release:
+        if now >= release:
             due.append(article)
     return due
 
@@ -82,24 +82,27 @@ def check_publication(slugs):
 def main():
     queue = json.loads(Path(".github/site-publications.json").read_text(encoding="utf-8"))
     articles = due_articles(queue["articles"], datetime.now(timezone.utc))
-    test = os.environ["GITHUB_EVENT_NAME"] in {"push", "workflow_dispatch"}
-    if not articles and not test:
+    event = os.environ["GITHUB_EVENT_NAME"]
+    if event == "schedule" and not articles:
+        return
+
+    git("fetch", "--no-tags", "origin", f"refs/heads/{queue['branch']}")
+    if event == "push" or not articles:
+        for slug in activate(queue["articles"]):
+            print(f"Validated queued site files: {slug}")
+        return
+
+    released = activate(articles)
+    slugs = [article["slug"] for article in articles]
+    if released:
+        git("config", "user.name", "github-actions[bot]")
+        git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
+        git("commit", "-m", "Publish scheduled articles: " + ", ".join(released))
+        git("push", "origin", "HEAD:main")
+    elif check_publication(slugs):
         return
 
     api = f"repos/{os.environ['GITHUB_REPOSITORY']}/pages/builds"
-    if articles:
-        git("fetch", "--no-tags", "origin", f"refs/heads/{queue['branch']}")
-        released = activate(articles)
-        if released:
-            git("config", "user.name", "github-actions[bot]")
-            git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
-            git("commit", "-m", "Publish scheduled articles: " + ", ".join(released))
-            git("push", "origin", "HEAD:main")
-        slugs = [article["slug"] for article in articles]
-        if not test and not released and check_publication(slugs):
-            return
-    else:
-        slugs = ["osago"]
 
     build = json.loads(gh("--method", "POST", api))
     build_url = build["url"]

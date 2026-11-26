@@ -1,34 +1,34 @@
 {
-  "branch": "site-queue/2026-11-24",
+  "branch": "site-queue/2026-11-27",
   "articles": [
     {
-      "slug": "popcorn",
-      "at": "2026-11-24T06:00:00+03:00",
-      "snapshot": "2036c96666da4a313daa36da9f0e65473a487eb9",
+      "slug": "fuel-nozzle",
+      "at": "2026-11-27T06:00:00+03:00",
+      "snapshot": "87f176a7c30b6839c8b02bcb8e9e35560e8a05ed",
       "prior": {
-        "index.html": "dfb5acc7516f8b266b0c2175395226bbbaebedeb",
-        "rss.xml": "111ae5bcaf6ca5ada02c908bd3fab70d44430deb"
+        "index.html": "6628bd9b51d04dcf1adbb68504d52bd93452aa77",
+        "rss.xml": "f03339914b820789c2021bd28caf227900f46dbb"
       },
       "files": {
-        "index.html": "5edf6d28c31db134ae44cb3da21aa7ad68023245",
-        "rss.xml": "cd7df55333f38c81058e7b967e34b2f393ddf3a0",
-        "articles/popcorn/index.html": "a5f7045d77e738adb4d7bc57a9f6e9398edacabf",
-        "assets/popcorn.jpg": "cc4c65a3f6188207496d40f587eb0d349ddca24f"
+        "index.html": "108954bfb7968e25bb13e7f92800620548bf6538",
+        "rss.xml": "ecdaa62e96bdab65528cc0e8b2d30385a3a15b45",
+        "articles/fuel-nozzle/index.html": "7442c1597f6cad98ad9d2de4021447ffb2f9b6a0",
+        "assets/fuel-nozzle.jpg": "d7b0fb80fa2631d9e177678948b9d6177b17679a"
       }
     },
     {
-      "slug": "voice-message",
-      "at": "2026-11-24T15:00:00+03:00",
-      "snapshot": "acd8edb978dd12bd188c3b2520af34fe56c5ce0d",
+      "slug": "taxi-price",
+      "at": "2026-11-27T09:00:00+03:00",
+      "snapshot": "a75cbdb62761788711032c98fd4b6b82f76f6589",
       "prior": {
-        "index.html": "5edf6d28c31db134ae44cb3da21aa7ad68023245",
-        "rss.xml": "cd7df55333f38c81058e7b967e34b2f393ddf3a0"
+        "index.html": "108954bfb7968e25bb13e7f92800620548bf6538",
+        "rss.xml": "ecdaa62e96bdab65528cc0e8b2d30385a3a15b45"
       },
       "files": {
-        "index.html": "6628bd9b51d04dcf1adbb68504d52bd93452aa77",
-        "rss.xml": "f03339914b820789c2021bd28caf227900f46dbb",
-        "articles/voice-message/index.html": "50b3d9212ec83dabc2a0e613af557b7d205329c2",
-        "assets/voice-message.jpg": "d7aec22f11fc841d218e74df125ab0238b8f0ff2"
+        "index.html": "3ebeca57b6540e82a32f02041dfc9822ea74fc2a",
+        "rss.xml": "056923a35cf74aa0e7fefe0e0116daf978c3ac65",
+        "articles/taxi-price/index.html": "f13402353fae2a277e6f353066092718b2eed353",
+        "assets/taxi-price.jpg": "3b3a4d93477c1ef62ce84b31eb22ec6609d89ede"
       }
     }
   ]
